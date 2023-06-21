@@ -674,7 +674,7 @@ const performNextWork = (fiber) => {
 };
 ```
 
-[到这里我们简单实现了一个支持 hooks 功能的 fiber 版 React，完整代码请看我 github](https://github.com/applekj/frontend-framework-practice/tree/main/render-fiber)
+[到这里我们简单实现了一个支持 hooks 功能的 fiber 版 React，完整代码请看我 github](https://github.com/applekj/frontend-knowledge/tree/master/examples/React/React-fiber)
 
 ## 总结
 

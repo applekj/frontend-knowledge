@@ -110,7 +110,7 @@ const getId = (str) => {
 };
 ```
 
-[本章所有示例和习题答案](./regex-1.js)
+[本章所有示例和习题答案](https://github.com/applekj/frontend-knowledge/tree/master/examples/Regexp/regexp-esoterica/regex-1.js)
 
 ## 二、正则表达式位置匹配攻略
 
@@ -148,7 +148,7 @@ const checkPassword = (str) => {
 };
 ```
 
-[本章所有习题答案](./regex-2.js)
+[本章所有习题答案](https://github.com/applekj/frontend-knowledge/tree/master/examples/Regexp/regexp-esoterica/regex-2.js)
 
 ## 三、正则表达式括号的作用
 
@@ -278,9 +278,9 @@ const checkCouple = (str) => {
 };
 ```
 
-[本章所有习题答案](./regex-3.js)
+[本章所有习题答案](https://github.com/applekj/frontend-knowledge/tree/master/examples/Regexp/regexp-esoterica/regex-3.js)
 
-[到这里，正则表达式的各种套路我们都介绍完了，希望大家再遇到正则问题能更得心应手](https://github.com/applekj/programming-capability/blob/main/regexp)
+到这里，正则表达式的各种套路我们都介绍完了，希望大家再遇到正则问题能更得心应手。
 
 ## 总结
 

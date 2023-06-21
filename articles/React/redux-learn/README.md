@@ -1,3 +1,5 @@
+[本文代码地址](https://github.com/applekj/frontend-knowledge/tree/master/examples/React/redux-learn)
+
 ## 一、什么是 redux
 
 redux 是一个基于 flux 的前端架构，它的设计思想很简单，认为一个 web 应用就是一个状态机，视图与状态是一一对应的，所有的状态都保存在一个对象里。 这里有 3 个基本概念需要理清楚
