@@ -1,9 +1,3 @@
-## 快速启动
-
-git clone https://github.com/applekj/redux-learn.git  
-npm i  
-npm run start
-
 ## 一、什么是 redux
 
 redux 是一个基于 flux 的前端架构，它的设计思想很简单，认为一个 web 应用就是一个状态机，视图与状态是一一对应的，所有的状态都保存在一个对象里。 这里有 3 个基本概念需要理清楚
@@ -136,5 +130,4 @@ render(
 启动项目  
 npm run start
 
-> redux 并不一定要搭配 react 使用，它只是一个状态管理库，几乎可以搭配任何框架使用，如果这篇文章对您学习 redux 有帮助，不妨点个 star  
-> 本人目前求职中，职位：前端开发工程师，坐标：武汉，如有小伙伴内推，或者需要前端开发，联系 QQ：253814787 邮箱：yanjingjie86@126.com
+> redux 并不一定要搭配 react 使用，它只是一个状态管理库，几乎可以搭配任何框架使用，如果这篇文章对您学习 redux 有帮助，不妨点个 star

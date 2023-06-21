@@ -3,7 +3,7 @@
 已经完成的文章如下：
 
 -   React.js
-    -   [手写简易版 React 来彻底搞懂 fiber 架构](https://github.com/applekj/frontend-knowledge/tree/master/articles/React/render-fiber)
-    -   [结合官网示例深入理解 redux](https://github.com/applekj/frontend-knowledge/tree/master/articles/Regexp/regexp-esoterica)
+    -   [手写简易版 React 来彻底搞懂 fiber 架构](https://github.com/applekj/frontend-knowledge/tree/master/articles/React/React-fiber)
+    -   [结合官网示例深入理解 redux](https://github.com/applekj/frontend-knowledge/blob/master/articles/React/redux-learn)
 -   正则表达式
     -   [正则表达式通关秘籍](https://github.com/applekj/frontend-knowledge/tree/master/articles/Regexp/regexp-esoterica)
