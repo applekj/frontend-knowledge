@@ -11,7 +11,7 @@ redux 是一个基于 flux 的前端架构，它的设计思想很简单，认�
 ## 二、redux 是怎么工作的
 
 在 redux 里，真正干活的是`store`，那`store`是什么呢，如下图：  
-![加载失败，请刷新网页](https://github.com/applekj/frontend-knowledge/tree/master/images/React/redux-learn/store.jpg)  
+![加载失败，请刷新网页](https://github.com/applekj/frontend-knowledge/blob/master/images/React/redux-learn/store.jpg)  
 可以看到`store`就是一个对象，里面有 5 个方法，分别是`dispatch`,`getState`,`replaceRducer`,`subscribe`,`Symbol`  
 要了解 redux 是如何工作的，只需要了解前 3 个核心方法即可：
 
