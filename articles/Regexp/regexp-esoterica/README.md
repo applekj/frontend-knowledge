@@ -116,7 +116,7 @@ const getId = (str) => {
 
 正则表达式匹配位置时，一般用于修改字符串，那位置是什么呢？可以把位置理解成空字符，如下箭头所指的地方：
 
-![加载失败，请刷新网页](https://github.com/applekj/frontend-knowledge/tree/master/images/Regexp/regexp-esoterica/position.jpg)
+![加载失败，请刷新网页](https://github.com/applekj/frontend-knowledge/blob/master/images/Regexp/regexp-esoterica/position.jpg)
 
 在 es5 中，共有 6 个锚字符：
 
