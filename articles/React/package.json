@@ -1,0 +1,28 @@
+{
+  "name": "frontend-framework-practice",
+  "version": "1.0.0",
+  "description": "实现前端框架",
+  "main": "index.js",
+  "scripts": {
+    "watch:vdom":"npx babel render-vdom --out-dir render-vdom/dist --ignore 'render-vdom/dist/*.js' --watch",
+    "watch:component":"npx babel render-component --out-dir render-component/dist --ignore 'render-component/dist/*.js' --watch",
+    "watch:patch":"npx babel render-patch --out-dir render-patch/dist --ignore 'render-patch/dist/*.js' --watch ",
+    "watch:fiber":"npx babel render-fiber --out-dir render-fiber/dist --ignore 'render-fiber/dist/*.js' --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applekj/frontend-framework-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/applekj/frontend-framework-practice/issues"
+  },
+  "homepage": "https://github.com/applekj/frontend-framework-practice#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-react": "^7.18.6"
+  }
+}
