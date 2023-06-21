@@ -1,3 +1,9 @@
+## run
+
+```
+npx http-server ./render-fiber
+```
+
 # 手写简易版 React 来彻底搞懂 fiber 架构
 
 作为前端工程师，我们几乎每天都在使用前端框架，如果你是 React 体系，一定会经常听到 fiber 架构，那 fiber 到底是啥？与其查阅各种解释，不如手写一个 fiber 版 React，彻底理解其实现原理。
@@ -109,7 +115,7 @@ const setAttribute = (dom, key, value) => {
 
 此时，vdom 的渲染逻辑就完成了，我们可以测试下效果。
 
-![加载失败，请刷新网页](../image/vdomResult.gif)
+![加载失败，请刷新网页](../../../../images/React/React-fiber/vdomResult.gif)
 
 但是，vdom 写起来太麻烦，一般是通过 DSL（领域特定语言）来写，然后编译成 vdom。
 
@@ -542,7 +548,7 @@ const useState = (init) => {
 
 这样我们就可以使用 useState 了，测试下。
 
-![加载失败，请刷新网页](../image/useState.gif)
+![加载失败，请刷新网页](../../../../images/React/React-fiber/useState.gif)
 
 上面的代码只有一个 state 变量，如果有多个 useState 怎么办呢？为了支持多个 useState，我们考虑把 state 改成一个数组，多个 useState 按照顺序放进这个数组里，访问的时候通过下标来访问：
 
