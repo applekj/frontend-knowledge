@@ -1,9 +1,3 @@
-## run
-
-```
-npx http-server ./render-fiber
-```
-
 # 手写简易版 React 来彻底搞懂 fiber 架构
 
 作为前端工程师，我们几乎每天都在使用前端框架，如果你是 React 体系，一定会经常听到 fiber 架构，那 fiber 到底是啥？与其查阅各种解释，不如手写一个 fiber 版 React，彻底理解其实现原理。
