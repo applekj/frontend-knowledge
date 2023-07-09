@@ -1,4 +1,4 @@
-# 手写webpack来彻底了解loader和plugins
+# 手写webpack来彻底了解loader和plugin
 
 作为一名前端工程师，相信大家一定用过webpack，但我们熟悉它的底层原理吗，与其查阅各种解释，不如手写一个简易版webpack，彻底理解其实现原理。
 
@@ -141,7 +141,7 @@ module.exports = {
 });
 ```
 
-看eval方法里的字符串，这跟我们写的代码好像啊，是的，它就是我们写的代码，只不过用ast解析成了一段字符串，而且它还实现了"__webpack_require__"，替换了我们代码里的"require"，到这里我们就已经知道webpack主要干了两件事：解析ast、实现"__webpack_require__"，接下来我们自己实现一个webpack。
+看eval方法里的字符串，这跟我们写的代码好像啊，是的，它就是我们写的代码，只不过用ast解析成了一段字符串，而且它还实现了__webpack_require__方法，替换了我们代码里的require，到这里我们就已经知道webpack主要干了两件事：解析ast、实现__webpack_require__，接下来我们自己实现一个webpack。
 
 ## 二、实现webpack
 
@@ -273,7 +273,7 @@ class Compiler {
 module.exports = Compiler
 ```
 
-此时，我们在webpack-dev项目执行 npx my-pack ，输出代码如下，表示ast的解析已经完成了，而且也将"require"替换成了"__webpack_require__"：
+此时，我们在webpack-dev项目执行 npx my-pack ，输出代码如下，表示ast的解析已经完成了，而且也将require替换成了__webpack_require__：
 
 ```javascript
 {
@@ -286,7 +286,7 @@ module.exports = Compiler
 }
 ```
 
-接下来，我们要将上面代码，通过模板最终生成webpack-dev项目的bundle.js文件，并在模板里实现"__webpack_require__"方法，在my-pack项目中下载ejs，然后在lib文件夹的main.ejs中增加以下代码：
+接下来，我们要将上面代码，通过模板最终生成webpack-dev项目的bundle.js文件，并在模板里实现__webpack_require__方法，在my-pack项目中下载ejs，然后在lib文件夹的main.ejs中增加以下代码：
 
 ```javascript
 (function (modules) {
@@ -367,7 +367,7 @@ module.exports = Compiler
 // ......省略代码......
 ```
 
-在webpack-dev项目，执行 npx my-pack ，可以看到在dist目录下生成了bundle.js文件，在浏览器中测试下。
+在webpack-dev项目中执行 npx my-pack ，可以看到在dist目录下生成了bundle.js文件，在浏览器中测试下。
 
 ![加载失败，请刷新网页](https://github.com/applekj/frontend-knowledge/blob/master/images/Webpack/webpack-dev/result.jpg)
 
@@ -471,11 +471,11 @@ body {
 
 ## 四、支持plugin
 
-我们知道webpack是基于插件的架构体系，那上文介绍的loader是不是插件呢，很显然不是，loader只会对源码进行相应的处理，可以打包、压缩，而plugin是在webpack不同的执行时期里注册函数，webpack执行到这里时调用对应的注册函数，因此plugin 才是作用于webpack本身上的插件，不仅可以打包优化和压缩，还可以重新定义环境变量，功能强大到可以用来处理各种各样的任务，对比loader要强大的多。
+我们知道webpack是基于插件的架构体系，那上文介绍的loader是不是插件呢，很显然不是，loader只会对源码进行相应的处理，可以打包、压缩，而plugin是在webpack不同的执行时期里注册函数，等webpack执行到这里时触发对应的注册函数来完成各种任务，因此plugin才是作用于webpack本身上的插件，不仅可以打包优化和压缩，还可以重新定义环境变量，功能强大到可以用来处理各种各样的任务，对比loader要强大的多。
 
 那webpack是怎么完成事件的注册和触发的呢，很明显要用到发布订阅模式，webpack就是借助tapable来完成事件的绑定和触发。
 
-tapable是一个类似于node.js中的EventEmitter库，但专注于自定义事件的绑定和触发，那tapable怎么使用呢？
+tapable是一个类似于node.js中的EventEmitter库，但更专注于自定义事件的绑定和触发，那tapable怎么使用呢？
 
 ```javascript
 const { SyncHook } = require('tapable')
@@ -495,9 +495,9 @@ hook.call('张三')
 // react 张三
 ```
 
-可以看到在执行hook.call方法时，首先依次执行hook.tap方法，这就是tapable提供的最简单的同步钩子，使用tap注册同步事件，再调用call来触发事件。
+可以看到在执行hook.call方法时，首先依次执行hook.tap方法，然后执行hook.call方法，这就是tapable提供的最简单的同步钩子，使用tap注册同步事件，再调用call来触发事件。
 
-此外tapable还提供很多异步钩子：
+此外tapable还提供很多异步钩子，比如AsyncParallelHook：
 
 ```javascript
 const { AsyncParallelHook } = require('tapable')
@@ -539,7 +539,9 @@ hook.callAsync('yan', function () {
  */
 ```
 
-通过以上两个例子，我们就大致知道了tapable是怎么使用，接下来我们写一个插件，并在my-pack中注册一些事件。
+在上例中，使用hook.tapAsync来注册异步任务，再调用hook.callAsync来执行这些异步任务，所有异步任务执行完在执行callAsync的回调函数。
+
+通过以上两个例子，我们就大致知道了tapable怎么使用的，接下来我们写一个插件，并在my-pack中注册一些事件。
 
 plugin本质上是一个对外导出的class，类中包含一个固定方法名apply，apply方法的参数是Compiler的实例compiler。
 
@@ -602,7 +604,7 @@ compiler.hooks.entryOption.call()
 compiler.run()
 ```
 
-Compiler.js增加如下代码：
+修改Compiler.js：
 
 ```javascript
   constructor(config) {
@@ -625,7 +627,7 @@ run() {
 
 ## 总结
 
-1、webpack最基本的功能就是实现了一套浏览器支持的模块化语句，不仅支持CommonJS规范，还支持ES6的模块规范、AMD、CMD等模块规范
-2、webpack在打包代码前会进行ast解析，文中我们采用babel来进行ast解析，但webpack官方并没有采用babel，而是自己实现了一套ast解析
-3、loader就是一个函数，参数为源码，输出的也是源码，文中我们采用普通loader的方式写了两个loader，此外loader还支持前置、后置和内联的方式
-4、plugin本质上就是一个类，类中包含一个固定方法名apply，apply方法的参数是Compiler的实例compiler，只有Compiler实例化后才可以触发webpack生命周期的钩子
+    1、webpack最基本的功能就是实现了一套浏览器支持的模块化语句，不仅支持CommonJS规范，还支持ES6的模块规范、AMD、CMD等模块规范
+    2、webpack在打包代码前会进行ast解析，文中我们采用babel来进行ast解析，但webpack官方并没有采用babel，而是自己实现了一套ast解析
+    3、loader就是一个函数，参数为源码，输出的是经过loader函数处理过的源码，文中我们采用普通loader的方式写了两个loader，此外loader还支持前置、后置和内联的方式
+    4、plugin本质上就是一个类，类中包含一个固定方法apply，apply方法的参数是Compiler的实例compiler，只有Compiler实例化后才可以触发webpack生命周期的钩子
