@@ -4,11 +4,11 @@
   "description": "实现前端框架",
   "main": "index.js",
   "scripts": {
-    "watch:vdom":"npx babel render-vdom --out-dir render-vdom/dist --ignore 'render-vdom/dist/*.js' --watch",
-    "watch:component":"npx babel render-component --out-dir render-component/dist --ignore 'render-component/dist/*.js' --watch",
-    "watch:patch":"npx babel render-patch --out-dir render-patch/dist --ignore 'render-patch/dist/*.js' --watch ",
-    "watch:fiber":"npx babel render-fiber --out-dir render-fiber/dist --ignore 'render-fiber/dist/*.js' --watch",
-    "start":"npx http-server ./render-fiber"
+    "watch:jsx": "npx babel render-jsx --out-dir render-jsx/dist --ignore 'render-jsx/dist/*.js' --watch",
+    "watch:component": "npx babel render-component --out-dir render-component/dist --ignore 'render-component/dist/*.js' --watch",
+    "watch:patch": "npx babel render-patch --out-dir render-patch/dist --ignore 'render-patch/dist/*.js' --watch ",
+    "watch:fiber": "npx babel render-fiber --out-dir render-fiber/dist --ignore 'render-fiber/dist/*.js' --watch",
+    "start": "npx http-server ./render-fiber"
   },
   "repository": {
     "type": "git",
