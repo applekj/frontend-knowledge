@@ -46,6 +46,8 @@ const setAttributes = (dom, key, value) => {
     value(dom);
   } else if (key === 'value' || key === 'checked' || key === 'className') {
     dom[key] = value;
+  } else if (key == 'key') {
+    dom.__key = value;
   } else if (typeof value !== 'object' && typeof value !== 'function') {
     dom.setAttribute(key, value);
   }
@@ -121,11 +123,10 @@ const patch = (dom, vdom, parent = dom.parentNode) => {
     }
   } else if (dom instanceof Text) {
     //判断dom是否文本节点
-    //如果文本节点改动为其他DOM元素节点，或文本内容更改，直接更新
-    if (typeof vdom === 'object' || dom.textContent !== vdom) {
-      replace(render(vdom, parent));
-    } else {
-      newDom = dom;
+    // 如果文本节点改为其他DOM元素节点，或文本内容更改，直接更新
+    if (typeof vdom === 'object' || dom.textContent != vdom) {
+      newDom = render(vdom, parent);
+      replace(newDom);
     }
   } else if (dom.nodeName !== vdom.type.toUpperCase() && typeof vdom === 'object') {
     //判断dom是否DOM元素，且dom的类型与vdom的类型不一致，直接替换

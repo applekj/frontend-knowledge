@@ -13,7 +13,6 @@ const render = (vdom, parent = null) => {
     if (isTextNode(vdom)) { //如果是文本节点
         dom = mount(document.createTextNode(vdom))
     } else if (isElementNode(vdom)) { //如果是元素节点
-        console.log(vdom)
         dom = mount(document.createElement(vdom.type))
         for (const prop in vdom.props) { //遍历vdom的props对象，挂载到dom节点上
             setAttribute(dom, prop, vdom.props[prop])

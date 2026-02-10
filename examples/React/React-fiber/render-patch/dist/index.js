@@ -33,7 +33,8 @@ class List extends Component {
         text: 'ccc',
         color: 'red'
       }],
-      textColor: props.textColor
+      textColor: props.textColor,
+      count: 0
     };
   }
   handlerAdd() {
@@ -60,13 +61,19 @@ class List extends Component {
         color: this.state.textColor
       },
       handlerRemove: this.handlerRemove.bind(this, index)
-    }))), createElement("div", null, createElement("input", {
+    }))), createElement("div", null, createElement("div", null, this.state.count), createElement("input", {
       ref: element => {
         this.ref = element;
       }
     }), createElement("button", {
       onClick: this.handlerAdd.bind(this)
-    }, "add")));
+    }, "add"), createElement("button", {
+      onClick: () => {
+        this.setState({
+          count: this.state.count + 1
+        });
+      }
+    }, "add count")));
   }
 }
 render(createElement(List, {

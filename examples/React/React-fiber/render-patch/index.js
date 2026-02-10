@@ -27,7 +27,8 @@ class List extends Component {
                     color: 'red'
                 }
             ],
-            textColor: props.textColor
+            textColor: props.textColor,
+            count: 0
         }
     }
 
@@ -61,8 +62,12 @@ class List extends Component {
                     />)}
                 </ul>
                 <div>
+                    <div>{this.state.count}</div>
                     <input ref={element => { this.ref = element }} />
                     <button onClick={this.handlerAdd.bind(this)}>add</button>
+                    <button onClick={() => {
+                        this.setState({ count: this.state.count + 1 })
+                    }}>add count</button>
                 </div>
             </div>
 

@@ -62,12 +62,13 @@ const render = (vdom, parent = null) => {
       render(child, dom);
     }
   } else if (isComponentNode(vdom)) {
-    //判断是否组件，这里暂时判断是否函数组件
+    //判断是否组件,class组件和函数组件的type都是function
+    // 如果是组件（class组件、函数组件）,vdom的type就是生成组件的方法，用来生成组件，如果不是组件，type就是dom标签名
     const props = Object.assign({}, vdom.props, {
       children: vdom.children
     });
     if (Component.isPrototypeOf(vdom.type)) {
-      //判断是否class组件
+      //通过判断vdom.type是否在Component的原型链上，判断是否class组件
       const instance = new vdom.type(props);
       instance.componentWillMount();
       const componentVdom = instance.render();
